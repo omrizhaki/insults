@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insults</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <style>
+    html {
+      margin: 5em;
+    }
+    body {
+        margin-top: 10%;
+        background-image: url('/static/imgur.jpg');
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 40%;
+        font-family: Quicksand;
+      }
+    #results {
+      margin: 0.5em;
+      background: rgba(230, 230, 230, 0.7);
+    }
+    .insult-details {
+      display: block;
+    }
+    .insult-property {
+      display: block;
+    }
+    .choose {
+      background: rgba(230, 230, 230, 0.5);
+    }
+    .not_available {
+      color: red;
+      margin-top: 1%;
+    }
+    h1 {
+      text-align: center;
+      color: RGB(104, 22, 124);
+      background: rgba(230, 230, 230, 0.7);
+      padding: 4px;
+    }
+    h2 {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: RGB(104, 22, 124);
+    }
+    h4 {
+      color: black;
+    }
+    </style>
+  </head>
+  <body>
+    <h1><strong>It's A Small World After All</strong></h1>
+    <div class="choose">
+      <h4><strong>Choose one of the following languages:</strong></h4>
+      <h5>Chinese, German, Greek, English, Spanish, French, Russian, Swahili, Italian</h5>
+    </div>
+    <div id="search">
+      <form id="search-form" class="row" method="GET" action="/">
+        <div class="col-auto">
+          <label for="language" class="visually-hidden">language</label>
+          <input class="form-control" id="language" name="language" type="text" placeholder="English" tabindex=0 autofocus>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-secondary">Generate</button>
+        </div>
+      </form>
+    </div>
+    <div class="not_available">
+      {% if not_available %}
+        {{not_available}}
+      {% endif %}
+    </div>    
+    <h2>Results</h2>
+    <div id="results">
+      <div class="insult-details">
+        <div class="the language insult-property">The language: {{language}}</div>
+        <div class="the insult insult-property">The insult: {{insult}}</div>
+      </div>
+    </div>
+  </body>
+</html>
